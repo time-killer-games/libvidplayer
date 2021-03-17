@@ -249,8 +249,8 @@ void video_play(string ind) {
   mpv_initialize(videos[ind].mpv);
   const char *cmd[] = { "loadfile", ind.c_str(), NULL };
   mpv_command(videos[ind].mpv, cmd);
-  std::thread stringhread(video_loop, ind, videos[ind].mpv);
-  stringhread.detach();
+  std::thread stringthread(video_loop, ind, videos[ind].mpv);
+  stringthread.detach();
 }
 
 bool video_is_paused(string ind) {
